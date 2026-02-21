@@ -1,0 +1,29 @@
+.button {
+    width: 100%;
+    padding: 1rem 1.2rem;
+
+    border: none;
+    border-radius: 50rem;
+    outline: none;
+
+    font-family: Montserrat;
+    font-weight: 600;
+    font-size: 1rem;
+
+    transition:
+        transform 120ms ease,
+        box-shadow 120ms ease;
+
+    cursor: pointer;
+
+    &.primary-button {
+        background-color: #C40C0C;
+        color: white;
+    }
+
+    &:active {
+        transform: scale(0.95);
+    }
+
+
+}

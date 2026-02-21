@@ -1,0 +1,142 @@
+@mixin flex-column($gap: 0rem) {
+    display: flex;
+    flex-direction: column;
+    gap: $gap;
+}
+
+main {
+    min-height: 100vh;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding-inline: 1rem;
+    padding-block: 2em;
+
+    // background: linear-gradient(180deg,
+    //         #111111 30%,
+    //         #222 100%);
+
+    .svg-loader {
+        width: 80px;
+        height: 80px;
+    }
+
+    .track {
+        stroke: rgba(255, 255, 255, 0.1);
+    }
+
+    .progress {
+        stroke: #ff2e2e;
+        stroke-linecap: round;
+        stroke-dasharray: 251;
+        stroke-dashoffset: 251;
+        animation: dash 1.5s ease-in-out infinite;
+        transform-origin: center;
+    }
+
+    @keyframes dash {
+        0% {
+            stroke-dashoffset: 251;
+            transform: rotate(0deg);
+        }
+
+        50% {
+            stroke-dashoffset: 80;
+            transform: rotate(180deg);
+        }
+
+        100% {
+            stroke-dashoffset: 251;
+            transform: rotate(360deg);
+        }
+    }
+
+}
+
+.form-container {
+    height: fit-content;
+    width: 100%;
+
+    padding-inline: 1rem;
+    @include flex-column(3rem);
+    align-items: center;
+
+    h1 {
+        color: white;
+        letter-spacing: 1px;
+    }
+
+    form {
+        width: 100%;
+
+        @include flex-column(2rem);
+
+        // input {
+        //     width: 100%;
+        //     padding: 1.2rem 1.2rem;
+        //     border-radius: 0.6rem;
+        //     border: none;
+        //     outline: none;
+
+        //     font-size: 0.9rem;
+        // }
+
+        input {
+            width: 100%;
+            padding: 1rem 1.2rem;
+
+            border-radius: 0.8rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+
+            font-size: 0.95rem;
+            font-family: Montserrat;
+            transition: 0.3s ease;
+
+            outline: none;
+        }
+
+        input:focus {
+            border: 1px solid #C40C0C;
+            box-shadow: 0 0 0 1px rgba(124, 52, 52, 0.456);
+        }
+
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover,
+        input:-webkit-autofill:focus,
+        input:-webkit-autofill:active {
+            -webkit-box-shadow: 0 0 0 1000px rgba(255, 255, 255, 0.05) inset !important;
+            -webkit-text-fill-color: #fff !important;
+            caret-color: #fff;
+            font-family: Montserrat, sans-serif !important;
+            transition: background-color 5000s ease-in-out 0s;
+        }
+
+        // button {
+        //     width: 100%;
+        //     padding: 1rem 1.2rem;
+        //     border-radius: 50rem;
+        //     border: none;
+        //     outline: none;
+
+        //     background-color: #C40C0C;
+        //     font-family: Montserrat;
+        //     font-weight: 600;
+        //     font-size: 1rem;
+
+        //     color: white;
+        //     cursor: pointer;
+        // }
+
+    }
+
+    .toggleAuthForm {
+        text-decoration: none;
+        color: #C40C0C
+    }
+}

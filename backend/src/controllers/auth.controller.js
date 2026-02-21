@@ -7,7 +7,7 @@ async function registerController(req, res) {
   const { username, email, password, bio, profileImage } = req.body;
 
   const isUserAlreadyExist = await userModel.findOne({
-    $or: [{ email }, { password }],
+    $or: [{ email }, { username }],
   });
   if (isUserAlreadyExist) {
     return res.status(409).json({
@@ -105,7 +105,31 @@ async function loginController(req, res) {
   });
 }
 
+async function getMeController(req, res) {
+  const userID = req.user.ID;
+  console.log(req.user);
+  console.log(req.user.ID);
+
+  const user = await userModel.findById(userID);
+
+  if (!user) {
+    return res.status(404).json({
+      message: "User not found",
+    });
+  }
+
+  res.status(200).json({
+    user: {
+      username: user.username,
+      email: user.email,
+      bio: user.bio,
+      profileImage: user.profileImage,
+    },
+  });
+}
+
 module.exports = {
   registerController,
   loginController,
+  getMeController,
 };
