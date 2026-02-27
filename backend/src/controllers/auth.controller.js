@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 
 async function registerController(req, res) {
+  console.log("REGISTER BODY:", req.body);
   const { username, email, password, bio, profileImage } = req.body;
 
   const isUserAlreadyExist = await userModel.findOne({
@@ -54,6 +55,7 @@ async function registerController(req, res) {
 }
 
 async function loginController(req, res) {
+  console.log("LOGIN CONTROLLER HIT");
   const { username, email, password } = req.body;
 
   const user = await userModel.findOne({
